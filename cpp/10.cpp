@@ -15,7 +15,7 @@ long long to_decimal(string N, int radix) {
 		}
 		decimal += (weight * num);
 		weight *= radix;
-		cout << "In itr : " << decimal << endl; 
+		// cout << "In itr : " << decimal << endl; 
 	}
 	return decimal;
 }

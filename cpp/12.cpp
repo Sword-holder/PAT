@@ -38,55 +38,58 @@ int main() {
 	sort(M.begin(), M.end(), socreCmp);
 	sort(E.begin(), E.end(), socreCmp);
 	
-//	cout << "===================================" << endl;
-//	for (vector<pair<int, double> >::iterator itr = A.begin(); itr != A.end(); itr++) {
-//		cout << itr->first << ": " << itr->second << endl;
-//	}
-//	cout << "===================================" << endl;
-//	cout << "===================================" << endl;
-//	for (vector<pair<int, double> >::iterator itr = C.begin(); itr != C.end(); itr++) {
-//		cout << itr->first << ": " << itr->second << endl;
-//	}
-//	cout << "===================================" << endl;
-//	cout << "===================================" << endl;
-//	for (vector<pair<int, double> >::iterator itr = M.begin(); itr != M.end(); itr++) {
-//		cout << itr->first << ": " << itr->second << endl;
-//	}
-//	cout << "===================================" << endl;
-//	cout << "===================================" << endl;
-//	for (vector<pair<int, double> >::iterator itr = E.begin(); itr != E.end(); itr++) {
-//		cout << itr->first << ": " << itr->second << endl;
-//	}
-//	cout << "===================================" << endl;
-	
 	// 遍历单科成绩表，按照排名更新排名和科目代码 
 	// 按照A、C、M、E的顺序更新，就可以保证优先级 
 	int i = 0;
+	int rank = 0;
+	int last_score = -1;
 	for (vector<pair<int, int> >::iterator itr = A.begin(); itr != A.end(); itr++, i++) {
-		// 如果这门科目的成绩更高，就更新排名和科目代码 
-		if (result[itr->first].first > i) {
-			result[itr->first].first = i;
+		// 如果这门科目的成绩更高，就更新排名和科目代码
+		if (last_score != itr->second) {
+			last_score = itr->second;
+			rank = i;
+		}
+		if (result[itr->first].first > rank) {
+			result[itr->first].first = rank;
 			result[itr->first].second = 'A';
 		}
 	} 
 	i = 0;
+	rank = 0;
+	last_score = -1;
 	for (vector<pair<int, int> >::iterator itr = C.begin(); itr != C.end(); itr++, i++) {
-		if (result[itr->first].first > i) {
-			result[itr->first].first = i;
+		if (last_score != itr->second) {
+			last_score = itr->second;
+			rank = i;
+		}
+		if (result[itr->first].first > rank) {
+			result[itr->first].first = rank;
 			result[itr->first].second = 'C';
 		}
 	} 
 	i = 0;
+	rank = 0;
+	last_score = -1;
 	for (vector<pair<int, int> >::iterator itr = M.begin(); itr != M.end(); itr++, i++) {
-		if (result[itr->first].first > i) {
-			result[itr->first].first = i;
+		if (last_score != itr->second) {
+			last_score = itr->second;
+			rank = i;
+		}
+		if (result[itr->first].first > rank) {
+			result[itr->first].first = rank;
 			result[itr->first].second = 'M';
 		}
 	} 
 	i = 0;
+	rank = 0;
+	last_score = -1;
 	for (vector<pair<int, int> >::iterator itr = E.begin(); itr != E.end(); itr++, i++) {
-		if (result[itr->first].first > i) {
-			result[itr->first].first = i;
+		if (last_score != itr->second) {
+			last_score = itr->second;
+			rank = i;
+		}
+		if (result[itr->first].first > rank) {
+			result[itr->first].first = rank;
 			result[itr->first].second = 'E';
 		}
 	} 
